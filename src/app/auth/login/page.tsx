@@ -4,7 +4,7 @@ import { signIn } from "next-auth/react";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
-import styles from "./auth.module.css";
+import styles from "../auth.module.css";
 
 export default function Login() {
   const [email, setEmail] = useState("");
