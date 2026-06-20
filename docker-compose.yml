@@ -1,0 +1,37 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:15-alpine
+    restart: always
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-playa_user}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-playa_password}
+      POSTGRES_DB: ${POSTGRES_DB:-playa_db}
+    ports:
+      - "5432:5432"
+    volumes:
+      - playa_db_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-playa_user} -d ${POSTGRES_DB:-playa_db}"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: always
+    ports:
+      - "3000:3000"
+    environment:
+      - DATABASE_URL=postgresql://${POSTGRES_USER:-playa_user}:${POSTGRES_PASSWORD:-playa_password}@db:5432/${POSTGRES_DB:-playa_db}
+      - NEXTAUTH_SECRET=${NEXTAUTH_SECRET:-super_secret_key_change_me_in_prod}
+      - NEXTAUTH_URL=${NEXTAUTH_URL:-http://localhost:3000}
+    depends_on:
+      db:
+        condition: service_healthy
+
+volumes:
+  playa_db_data:

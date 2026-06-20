@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Coco-Break</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="game-container">
+    <canvas id="gameCanvas" width="800" height="600"></canvas>
+    <div id="ui-layer">
+      <div id="start-screen" class="screen">
+        <h1>Coco-Break 🥥</h1>
+        <p>Cassez toutes les briques pour gagner !</p>
+        <button id="start-btn">Jouer</button>
+      </div>
+      <div id="game-over-screen" class="screen hidden">
+        <h1 id="game-over-title">Game Over</h1>
+        <p>Score: <span id="final-score">0</span></p>
+        <button id="restart-btn">Rejouer</button>
+        <p class="info" id="save-info"></p>
+      </div>
+      <div id="hud" class="hidden">
+        <span id="score-display">Score: 0</span>
+        <span id="lives-display">Vies: 3</span>
+      </div>
+    </div>
+  </div>
+  <script src="game.js"></script>
+</body>
+</html>
