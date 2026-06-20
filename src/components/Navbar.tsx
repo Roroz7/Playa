@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import styles from "./Navbar.module.css";
 import { usePathname } from "next/navigation";
 import { useSession, signOut } from "next-auth/react";
@@ -12,8 +13,9 @@ export default function Navbar() {
   return (
     <header className={styles.header}>
       <div className={`container ${styles.navContainer}`}>
-        <Link href="/" className={styles.logo}>
-          🌴 Playa
+        <Link href="/" className={styles.logo} style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+          <Image src="/logo.png" alt="Playa Logo" width={40} height={40} />
+          Playa
         </Link>
         <nav className={styles.navLinks}>
           <Link href="/" className={pathname === "/" ? styles.active : ""}>
