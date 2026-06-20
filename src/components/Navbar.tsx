@@ -14,7 +14,7 @@ export default function Navbar() {
     <header className={styles.header}>
       <div className={`container ${styles.navContainer}`}>
         <Link href="/" className={styles.logo} style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-          <Image src="/logo.png" alt="Playa Logo" width={40} height={40} />
+          <Image src="/logo.png" alt="Playa Logo" width={40} height={40} style={{ borderRadius: '50%', objectFit: 'cover' }} />
           Playa
         </Link>
         <nav className={styles.navLinks}>
