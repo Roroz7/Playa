@@ -2,6 +2,8 @@ import Link from "next/link";
 import styles from "./page.module.css";
 import { prisma } from "@/lib/prisma";
 
+export const dynamic = 'force-dynamic';
+
 export default async function Home() {
   // Récupérer les 6 derniers jeux de la base de données
   const featuredGames = await prisma.game.findMany({

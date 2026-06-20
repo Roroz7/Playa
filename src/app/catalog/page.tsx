@@ -2,6 +2,8 @@ import Link from "next/link";
 import styles from "./catalog.module.css";
 import { prisma } from "@/lib/prisma";
 
+export const dynamic = 'force-dynamic';
+
 export default async function Catalog() {
   // Récupérer les jeux de la base de données
   const games = await prisma.game.findMany({ orderBy: { createdAt: 'desc' } });
