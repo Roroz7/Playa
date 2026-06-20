@@ -32,6 +32,9 @@ services:
     depends_on:
       db:
         condition: service_healthy
+    volumes:
+      - playa_uploads:/app/public/uploads
 
 volumes:
   playa_db_data:
+  playa_uploads:

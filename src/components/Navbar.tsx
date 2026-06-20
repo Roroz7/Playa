@@ -28,6 +28,11 @@ export default function Navbar() {
             <div style={{ width: "100px" }}></div>
           ) : session ? (
             <div style={{ display: "flex", alignItems: "center", gap: "15px" }}>
+              {session.user?.role === "ADMIN" && (
+                <Link href="/admin" className="btn" style={{ background: "var(--primary-color)", color: "#000", border: "none" }}>
+                  Admin
+                </Link>
+              )}
               <span style={{ fontWeight: 600 }}>Salut, {session.user?.name} !</span>
               <button onClick={() => signOut()} className="btn btn-outline">
                 Déconnexion
