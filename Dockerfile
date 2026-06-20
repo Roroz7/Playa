@@ -1,5 +1,8 @@
 FROM node:20-alpine AS base
 
+ENV PRISMA_CLI_QUERY_ENGINE_TYPE=binary
+ENV PRISMA_CLIENT_ENGINE_TYPE=binary
+
 # Installer les dépendances
 FROM base AS deps
 RUN apk add --no-cache libc6-compat openssl
